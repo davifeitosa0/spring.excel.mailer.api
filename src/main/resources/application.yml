@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: teste
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:meubanco
+    username: sa
+    password:
+
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
+    out-of-order: false
+
+  jackson:
+    default-property-inclusion: NON_NULL
+
+  jpa:
+    hibernate:
+      show_sql: false
+      format_sql: true
+      order_inserts: false
+logging:
+  pattern:
+    console: "[%-5level] [%t] [%date{ISO8601}] [%c{1}:%M:%L] [%X{spanId}] %msg %n"
+  level:
+    root: WARN
+    com:
+      excel:
+        mailer:
+          api: INFO
